@@ -1,5 +1,5 @@
 
-Customizações para utilizar o Vim na edição de arquivos e programar e Go.
+Customizações para utilizar o Vim na edição de arquivos e programar em Go.
 
 ## Instruções de instalação - Linux
 
@@ -25,7 +25,7 @@ git submodule update --init
 cd ~/.vim/pack/plugins/start/vim-go && git checkout v1.24
 ``
 
-## Adicionando novos git submodules ao projeto
+### Adicionando novos git submodules ao projeto
 
 ``
 cd ~/.vim/pack/plugins/start && git submodule add https://github.com/repo/project.git

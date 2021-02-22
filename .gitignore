@@ -1,0 +1,6 @@
+pack/plugins/start/vim-go/
+pack/plugins/start/tagbar/
+pack/plugins/start/vim-go/
+pack/plugins/start/vim-polyglot/
+.netrwhist
+test.go

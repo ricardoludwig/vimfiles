@@ -5,6 +5,7 @@ Customizações para utilizar o Vim na edição de arquivos e programar em Go.
 
 ``
 git clone https://github.com/ricardoludwig/vimfiles.git ~/.vim
+``
 
 ``
 echo "source ~/.vim/.vimrc" > ~/.vimrc

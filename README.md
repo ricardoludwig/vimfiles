@@ -3,7 +3,7 @@
 ## Instruções de instalação - Linux
 
 ``
-git clone https://github.com/giggio/vimfiles.git ~/.vim
+git clone https://github.com/ricardoludwig/vimfiles.git ~/.vim
 
 echo "source ~/.vim/.vimrc" > ~/.vimrc
 

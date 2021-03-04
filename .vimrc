@@ -51,9 +51,9 @@ let vimlocal = expand("%:p:h") . "/.vimrc.local"
 
 " netrw customizations
 let g:netrw_liststyle = 3			" set netrw list tree style
-let g:netrw_banner = 0				" removing the banner
+" let g:netrw_banner = 0				" removing the banner
 let g:netrw_browse_split = 4		" open file in a new tab
-let g:netrw_winsize = 25			" set directory explorer width to 25% of page
+let g:netrw_winsize = 20			" set directory explorer width to 20% of page
 
 " highlight trailing white spaces:
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -68,17 +68,22 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set completeopt=longest,menuone,preview
 
+highlight ColorColumn ctermbg=DarkGrey
+set colorcolumn=140
+
 " a minimalist approach to show limit column width
-augroup collumnLimit
-  autocmd!
-  autocmd BufEnter,WinEnter,FileType scala,java,go
-       \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
-  let collumnLimit = 120 " feel free to customize
-  let pattern =
-		        \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
-  autocmd BufEnter,WinEnter,FileType scala,java,go
-       \ let w:m1=matchadd('CollumnLimit', pattern, -1)
-augroup END
+"augroup collumnLimit
+"  autocmd!
+"  autocmd BufEnter,WinEnter,FileType scala,java,go,text,md
+"       \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
+"  let collumnLimit = 120 " feel free to customize
+"  let pattern =
+"		        \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
+"  autocmd BufEnter,WinEnter,FileType scala,java,go,text,md
+"       \ let w:m1=matchadd('CollumnLimit', pattern, -1)
+"augroup END
+
+" autocmd TextChanged,TextChangedI * silent write " auto-save
 
 " plugins
 

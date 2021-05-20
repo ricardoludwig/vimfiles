@@ -1,4 +1,5 @@
 
+set autowrite						"writes the content of the file automatically if you call :make
 "" Whitespace
 set nowrap                      	" don't wrap lines
 set tabstop=4 shiftwidth=4      	" a tab is four spaces
@@ -42,8 +43,8 @@ set updatetime=500					" this setting controls how long to wait (in ms) before f
 set cmdheight=2						" remove 'Press Enter to continue' message when type information is longer than one line.
 
 " open splits in a more natural way:
-"set splitbelow
-"set splitright
+" set splitbelow
+" set splitright
 set diffopt=filler,vertical
 
 filetype plugin indent on       	" load file type plugins + indentation
@@ -52,7 +53,11 @@ let vimlocal = expand("%:p:h") . "/.vimrc.local"
 " netrw customizations
 let g:netrw_liststyle = 3			" set netrw list tree style
 " let g:netrw_banner = 0				" removing the banner
-let g:netrw_browse_split = 4		" open file in a new tab
+let g:netrw_browse_split = 3		" 1- open files in a new horizontal split
+									" 2- open files in a new vertical split
+									" 3- open files in a new tab
+									" 4- open in previous window
+
 let g:netrw_winsize = 20			" set directory explorer width to 20% of page
 
 " highlight trailing white spaces:
@@ -87,11 +92,18 @@ set colorcolumn=140
 
 " plugins
 
-" vim-polyglot
-let g:polyglot_disabled = ['go.plugin']	" disable go polyglot plugin
-
 " vim-go
+let g:polyglot_disabled = ['go.plugin']	" disable go polyglot plugin
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_list_type = "quickfix"			" force vim-go only uses quickfix list
+" let g:go_highlight_types = 1			" improve syntax highlighting, it impacts vim performance
 
+
+nnoremap <leader>b :GoBuild<CR>
+nnoremap <leader>r :GoRun<CR>
+nnoremap <leader>t :GoTest<CR>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 

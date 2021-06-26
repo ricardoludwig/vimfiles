@@ -30,4 +30,6 @@ cd ~/.vim/pack/plugins/start/vim-go && git checkout v1.24
 ``
 cd ~/.vim/pack/plugins/start && git submodule add https://github.com/repo/project.git
 ``
+### Removendo submodules
+[How to remove a submodule in Git](https://gist.github.com/myusuf3/7f645819ded92bda6677)
 

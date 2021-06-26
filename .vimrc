@@ -60,6 +60,9 @@ let g:netrw_browse_split = 3		" 1- open files in a new horizontal split
 
 let g:netrw_winsize = 20			" set directory explorer width to 20% of page
 
+" Custom shortcut commands
+nnoremap <leader>s :w<CR>
+
 " highlight trailing white spaces:
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -93,16 +96,30 @@ set colorcolumn=140
 " plugins
 
 " vim-go
+" let mapleader = "," 					" \ is default
 let g:polyglot_disabled = ['go.plugin']	" disable go polyglot plugin
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_list_type = "quickfix"			" force vim-go only uses quickfix list
+let g:go_fmt_command = "goimports"		" automatically format and also rewrite import declarations
+
 " let g:go_highlight_types = 1			" improve syntax highlighting, it impacts vim performance
 
+function! s:build_go_files()			" run :GoBuild or :GoTestCompile based on the go file
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
-nnoremap <leader>b :GoBuild<CR>
-nnoremap <leader>r :GoRun<CR>
-nnoremap <leader>t :GoTest<CR>
+" Custom go shortcut commands
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
